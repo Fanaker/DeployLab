@@ -1,0 +1,25 @@
+services:
+  retail-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DEPLOYLAB_DB: /service/data/deploylab.sqlite3
+    volumes:
+      - deploy_data:/service/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://127.0.0.1:8000/ready',timeout=2)"]
+      interval: 20s
+      timeout: 3s
+      retries: 3
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - retail-api
+volumes:
+  deploy_data:
