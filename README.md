@@ -1,6 +1,6 @@
 # DeployLab · Release Engineering Console
 
-**Proyecto de portafolio #17 · DevOps / CI/CD / Observability**
+**DevOps · CI/CD · Observability**
 
 Laboratorio de entrega continua con una pequeña aplicación FastAPI, un dashboard de operaciones, **Docker**, **GitHub Actions** y **Prometheus**. Permite estudiar el ciclo de build/test, health checks, métricas y un historial de releases con simulación local de rollback, sin publicar infraestructura.
 
@@ -86,7 +86,7 @@ flowchart LR
     T --> B[Docker Build]
     UI[Web dashboard] --> API[FastAPI]
     API --> DB[(SQLite)]
-    PROM[Prometheus] --> MET[/metrics]
+    PROM[Prometheus] --> MET["GET /metrics"]
     MET --> API
 ```
 
@@ -106,4 +106,6 @@ Proyecto complementario a QualityLab pero **independiente**, instalable y evalua
 
 ---
 
-**Proyecto de demostración para portafolio · Fanaker Labs · 2026**
+## Autor y licencia
+
+**Fanaker Labs** · Proyecto personal de entrega continua, gestión de releases y observabilidad. Código bajo licencia [MIT](LICENSE).
